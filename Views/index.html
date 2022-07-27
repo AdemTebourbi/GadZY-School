@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+	<meta charset="utf-8">
+	<title>GadZY School</title>
+	<link rel="icon" href="icon.png" type="img/x-icon">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.full-page {
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://wallpaperaccess.com/full/138770.jpg');
+			background-position: center;
+			background-size: cover;
+			position: absolute;
+		}
+
+		.navbar {
+			display: flex;
+			align-items: center;
+			padding: 20px;
+			padding-left: 50px;
+			padding-right: 30px;
+			padding-top: 50px;
+		}
+
+		nav {
+			flex: 1;
+			text-align: right;
+		}
+
+		nav ul {
+			display: inline-block;
+			list-style: none;
+		}
+
+		nav ul li {
+			display: inline-block;
+			margin-right: 70px;
+		}
+
+		nav ul li a {
+			text-decoration: none;
+			font-size: 20px;
+			color: white;
+			font-family: sans-serif;
+		}
+
+		div ul li button {
+			font-size: 20px;
+			color: white;
+			outline: none;
+			border: none;
+			background: transparent;
+			cursor: pointer;
+			font-family: sans-serif;
+		}
+
+		div ul li button:hover {
+			color: aqua;
+		}
+
+		nav ul li a:hover {
+			color: aqua;
+		}
+
+		a {
+			text-decoration: none;
+			color: palevioletred;
+			font-size: 28px;
+		}
+
+		#login-form {
+			display: none;
+		}
+
+		.form-box {
+			width: 380px;
+			height: 480px;
+			position: relative;
+			margin: 2% auto;
+			background: rgba(47, 47, 47, 0.3);
+			padding: 10px;
+			overflow: hidden;
+		}
+
+		.button-box {
+			width: 220px;
+			margin: 35px auto;
+			position: relative;
+			box-shadow: 0 0 20px 9px #f161281f;
+			border-radius: 30px;
+		}
+
+		.toggle-btn {
+			padding: 10px 30px;
+			cursor: pointer;
+			background: transparent;
+			border: 0;
+			outline: none;
+			position: relative;
+		}
+
+		#btn {
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 110px;
+			height: 100%;
+			background: #F3C693;
+			border-radius: 30px;
+			transition: .5s;
+		}
+
+		.input-group-login {
+			top: 150px;
+			position: absolute;
+			width: 280px;
+			transition: .5s;
+		}
+
+		.input-group-register {
+			top: 120px;
+			position: absolute;
+			width: 280px;
+			transition: .5s;
+		}
+
+		.input-field {
+			width: 100%;
+			padding: 10px 0;
+			margin: 5px 0;
+			border-left: 0;
+			border-top: 0;
+			border-right: 0;
+			border-bottom: 1px solid #999;
+			outline: none;
+			background: transparent;
+		}
+
+		.submit-btn {
+			width: 85%;
+			padding: 10px 30px;
+			cursor: pointer;
+			display: block;
+			margin: auto;
+			background: #F3C693;
+			border: 0;
+			outline: none;
+			border-radius: 30px;
+		}
+
+		#login {
+			left: 50px;
+		}
+
+		#login input {
+			color: white;
+			font-size: 15;
+		}
+
+		#register {
+			left: 450px;
+		}
+
+		#register input {
+			color: white;
+			font-size: 15;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="full-page">
+		<div class="navbar">
+			<div>
+				<ul id="MenuItems">
+					<li><button class="loginbtn" onclick="document.getElementById('login-form').style.display='block'"
+							style="width: auto;">Login/SignUp</button></li>
+				</ul>
+			</div>
+			<nav>
+				<ul id='MenuItems'>
+					<li><a href="http://localhost:3000/">Home</a></li>
+					<li><a href="#">Formations</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id='login-form' class="login-page">
+			<div class="form-box">
+				<div class="button-box">
+					<div id="btn"></div>
+					<button type="button" onclick="login()" class="toggle-btn">Log In</button>
+					<button type="button" onclick="register()" class="toggle-btn">Sign Up</button>
+				</div>
+				<form id="login" class="input-group-login">
+					<input id="Email" name="Email" type="text" class="input-field" placeholder="Email address" required>
+					<input id="Password" name="password" type="password" class="input-field" placeholder="Password"
+						required>
+					<button type="button" onclick="LogInBTNFN()" class='submit-btn'>Log in</button>
+				</form>
+				<div id="register" class="input-group-register">
+					<input id="fn" name="fn" type="text" class="input-field" placeholder="First name" required>
+					<input id="ln" name="ln" type="text" class="input-field" placeholder="Last name" required>
+					<input id="Birthday" name="Birthday" type="date" class="input-field" required>
+					<input id="EmailA" name="email" type="text" class="input-field" placeholder="Email address"
+						required>
+					<input id="PasswordA" name="password" type="password" class="input-field" placeholder="Password"
+						required>
+					<input id="Cpassword" name="Cpassword" type="password" class="input-field"
+						placeholder="Confirm Password" required>
+					<button onclick="SignUpBTN()" class='submit-btn'>Create account</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var x = document.getElementById('login');
+		var y = document.getElementById('register');
+		var z = document.getElementById('btn');
+		function register() {
+			x.style.left = '-400px';
+			y.style.left = '50px';
+			z.style.left = '110px';
+		}
+		function login() {
+			x.style.left = '50px';
+			y.style.left = '450px';
+			z.style.left = '0px';
+		}
+	</script>
+	<script>
+		var modal = document.getElementById('login-form');
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none"
+			}
+		}
+	</script>
+
+
+</body>
+
+</html>
+
+<script>
+	function LogInBTNFN() {
+		var Email = document.getElementById("Email").value;
+		var Password = document.getElementById("Password").value;
+		window.alert(Email + Password);
+		var url = 'http://localhost:3000/Login?email=' + Email + '&password=' + Password;
+		window.alert(url);
+		location.href = url;
+	}
+	function SignUpBTN() {
+		window.alert("Function Runned");
+
+		//Inputs
+		var FirstName = String(document.getElementById("fn").value);
+		var LastName = String(document.getElementById("ln").value);
+		var Birthday = String(document.getElementById("Birthday").value);
+		var Emaila = String(document.getElementById("EmailA").value);
+		var Password = String(document.getElementById("PasswordA").value);
+		var Confirm = String(document.getElementById("Cpassword").value);
+
+		//EmailBody
+
+		var Pseudo = FirstName + " " + LastName;
+		var mail = String(`<button onclick = "fetch('localhost:3000/Account', {method: 'POST',headers: {'Pseudo': '` + Pseudo + `''Birthday' : '` + Birthday + `''Email' : '` + Emaila + `''Password' : '` + Password + `'}, body: JSON.stringify(data)}).then(res => {console.log('Request complete! response:'', res);}">Confirm</button>`);
+		window.alert(mail);
+
+		//Conditions
+
+		if (FirstName.length < 20 && FirstName.length > 3) {
+			if (LastName.length < 20 && LastName.length > 3) {
+				if (Password.length < 20 && Password.length > 8) {
+					if (Password == Confirm) {
+						
+
+				fetch('http://localhost:3000/Account', {
+							method: 'POST',
+							headers: {
+								'Pseudo': Pseudo,
+								'Birthday': Birthday,
+								'Email': Emaila,
+								'Password': Password
+							},
+							body: JSON.stringify({
+								'Pseudo': Pseudo,
+								'Birthday': Birthday,
+								'Email': Emaila,
+								'Password': Password
+							}),
+						})
+
+
+
+
+					}
+					else {
+						window.alert("The confirmed Password is not the same");
+					}
+				}
+				else { window.alert("Invalid Password"); }
+
+			}
+			else { window.alert("Invalid Name"); }
+		}
+		else { window.alert("Invalid Name"); }
+	}
+
+</script>
